@@ -19,8 +19,16 @@ function make(req, res) {
     res.render("author/new");
 }
 
+const show = async (req, res) => {
+    // get thw author specific data from the author model
+    let { id } = req.params
+    let author = await AuthorModel.findById(id)
+        .catch(err => res.status(500).send(err))
+    res.render("author/show", {author});
+}
 module.exports = {
     create,
     index,
-    make
+    make,
+    show
 }

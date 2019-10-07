@@ -9,4 +9,6 @@ router.post("/authors", AuthorController.create);
 
 router.get("/authors/new", AuthorController.make);
 
+router.get("/authors/:id", AuthorController.show);
+
 module.exports = router;
