@@ -26,9 +26,26 @@ const show = async (req, res) => {
         .catch(err => res.status(500).send(err))
     res.render("author/show", {author});
 }
+
+const edit = async (req, res) => {
+    let { id } = req.params
+    let author = await AuthorModel.findById(id)
+        .catch(err => res.status(500).send(err));
+    res.render("author/edit", {author});
+}
+
+const update = async (req, res) => {
+    let {id} = req.params
+    let { name, bio, gender } = req.body
+    await AuthorModel.findByIdAndUpdate(id, {name, bio, gender} )
+        .catch(err => res.status(500).send(err));
+    res.redirect('authors/:id')
+}
 module.exports = {
     create,
     index,
     make,
-    show
+    show,
+    edit,
+    update
 }
