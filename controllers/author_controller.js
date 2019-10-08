@@ -41,11 +41,19 @@ const update = async (req, res) => {
         .catch(err => res.status(500).send(err));
     res.redirect(`/authors/${id}`);
 }
+
+const destroy = async (req,res) => {
+    let {id} = req.params
+    await AuthorModel.findByIdAndDelete(id)
+        .catch(err => res.status(500).send(err));
+    res.redirect('/authors');
+}
 module.exports = {
     create,
     index,
     make,
     show,
     edit,
-    update
+    update,
+    destroy
 }

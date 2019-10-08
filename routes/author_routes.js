@@ -15,4 +15,6 @@ router.get("/authors/edit/:id", AuthorController.edit);
 
 router.put("/authors/:id", AuthorController.update);
 
+router.delete("/authors/:id", AuthorController.destroy);
+
 module.exports = router;
