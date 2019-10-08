@@ -39,7 +39,7 @@ const update = async (req, res) => {
     let { name, bio, gender } = req.body
     await AuthorModel.findByIdAndUpdate(id, {name, bio, gender} )
         .catch(err => res.status(500).send(err));
-    res.redirect('authors/:id')
+    res.redirect(`/authors/${id}`);
 }
 module.exports = {
     create,
