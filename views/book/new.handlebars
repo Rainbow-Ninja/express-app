@@ -1,0 +1,22 @@
+<h1> NEW BOOK </h1>
+
+<form method="POST" action="/books">
+    <div>
+        <label> title </label>
+        <input type="text" name="title"/>
+    </div>
+    <div>
+        <label> Published </label>
+        <input type="date" name="published" />
+    </div>
+    {{!-- loop through the authors and display their names --}}
+    <div>
+        <select name="author">
+            {{#each authors}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{!-- <option value="{{this._id}}">{{this.name}}</option> --}}
+            {{/each}}
+        </select>
+    </div>
+    <input type="submit" value="SUBMIT" />
+</form>
