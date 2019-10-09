@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const app = express();
 const port = 3000;
 
-mongoose.connect("mongodb://localhost/books_r_us", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/books_app", { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 mongoose.connection.on("error", err => console.log(err));
@@ -20,6 +20,7 @@ app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(require("./routes/author_routes"));
+// app.use(require("./routes/author_routes"));
+app.use(require("./routes/book_routes"));
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
