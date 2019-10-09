@@ -4,5 +4,21 @@
 <p>{{book.author.name}}</p>
 <a href="/authors/{{book.author._id}}">{{book.author.name}}</a>
 
+<form method="POST" action="/books/{{book._id}}/comments">
+    <div>
+        <textarea name="body"></textarea>
+    </div>
+    <input type="submit" value="SUBMIT"/>
+</form>
+
+{{!-- display comments
+ --}}
+
+ {{#each book.comments}}
+    <p>{{this.body}}</p>
+    <p>{{this.created}}</p>
+ {{/each}}
+
+ {{!-- <p> {{book.comments}} </p> --}}
 {{!-- challenge: make the author clickable to take you to the author show page --}}
 
