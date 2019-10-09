@@ -17,8 +17,12 @@ const create = async (req, res) => {
 }
 
 const show = async (req, res) => {
+    let { id } = req.params
+    // fetch the book from the database
+    let book = await BookModel.findById(id).populate('author')
+        .catch(err => res.status(500).send(err));
     //show a single resource
-    res.send("SHOW");
+    res.render("book/show", {book});
 }
 module.exports = {
     make,
